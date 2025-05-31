@@ -22,7 +22,7 @@ SG_DESC=$(jq -r '.SecurityGroups[0].Description' "$SG_JSON")
 echo "Creating security group '${SG_NAME}-copy' in $TARGET_REGION (VPC: $TARGET_VPC_ID)..."
 NEW_SG_ID=$(aws ec2 create-security-group \
   --region "$TARGET_REGION" \
-  --group-name "${SG_NAME}-copy" \
+  --group-name "${SG_NAME}" \
   --description "$SG_DESC - copied from $SOURCE_REGION" \
   --vpc-id "$TARGET_VPC_ID" \
   --query 'GroupId' \
